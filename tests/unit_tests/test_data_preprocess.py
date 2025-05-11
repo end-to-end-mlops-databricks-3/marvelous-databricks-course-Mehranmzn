@@ -1,6 +1,7 @@
-import pytest
 import pandas as pd
+import pytest
 from pyspark.sql import SparkSession
+
 from mlops_course.config import ProjectConfig
 from mlops_course.data_process import DataProcessor
 
@@ -18,15 +19,13 @@ def test_dataprocessor_init(
 ) -> None:
     """Test DataProcessor initialization."""
     processor = DataProcessor(pandas_df=sample_data, config=config, spark=spark_session)
-    assert hasattr(processor, 'df')
+    assert hasattr(processor, "df")
     assert processor.config is config
     assert processor.spark is spark_session
 
 
 def test_column_types_and_missing_handling(
-    sample_data: pd.DataFrame,
-    config: ProjectConfig,
-    spark_session: SparkSession
+    sample_data: pd.DataFrame, config: ProjectConfig, spark_session: SparkSession
 ) -> None:
     """Test that numeric features are numeric, categorical features are 'category', and no missing values."""
     processor = DataProcessor(pandas_df=sample_data.copy(), config=config, spark=spark_session)
@@ -39,8 +38,8 @@ def test_column_types_and_missing_handling(
 
     # Categorical features
     for col in config.cat_features:
-        assert processor.df[col].dtype.name == 'category'
-        assert (processor.df[col] == 'Unknown').sum() >= 0  # missing filled with Unknown
+        assert processor.df[col].dtype.name == "category"
+        assert (processor.df[col] == "Unknown").sum() >= 0  # missing filled with Unknown
 
     # Target
     assert pd.api.types.is_numeric_dtype(processor.df[config.target])
@@ -56,9 +55,7 @@ def test_column_selection(sample_data: pd.DataFrame, config: ProjectConfig, spar
 
 
 def test_split_data_default_params(
-    sample_data: pd.DataFrame,
-    config: ProjectConfig,
-    spark_session: SparkSession
+    sample_data: pd.DataFrame, config: ProjectConfig, spark_session: SparkSession
 ) -> None:
     """Test DataProcessor.split_data defaults."""
     processor = DataProcessor(pandas_df=sample_data.copy(), config=config, spark=spark_session)
@@ -96,9 +93,12 @@ def test_save_to_catalog_success(sample_data: pd.DataFrame, config: ProjectConfi
 @pytest.mark.order(after=test_save_to_catalog_success)
 def test_delta_table_property_of_enable_change_data_feed(config: ProjectConfig, spark_session: SparkSession) -> None:
     """Verify delta.enableChangeDataFeed property is true on both tables."""
-    for table in ['train', 'test']:
+    for table in ["train", "test"]:
         full_name = f"{config.catalog_name}.{config.schema_name}.{table}"
-        properties = spark_session.sql(f"DESCRIBE EXTENDED {full_name}") \
-            .filter("col_name = 'delta.enableChangeDataFeed'") \
-            .select('data_type').collect()[0][0]
-        assert properties == 'true'
+        properties = (
+            spark_session.sql(f"DESCRIBE EXTENDED {full_name}")
+            .filter("col_name = 'delta.enableChangeDataFeed'")
+            .select("data_type")
+            .collect()[0][0]
+        )
+        assert properties == "true"

@@ -20,4 +20,3 @@ class SparkConfig(BaseSettings):
 
 # Load configuration from environment variables
 spark_config = SparkConfig()
-
