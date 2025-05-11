@@ -1,0 +1,31 @@
+prd:
+  catalog_name: mlops_prd
+  schema_name: game-sales
+acc:
+  catalog_name: mlops_acc
+  schema_name: game-sales
+dev:
+  catalog_name: mlops_dev
+  schema_name: game-sales
+
+parameters:
+  learning_rate: 0.01
+  n_estimators: 1000
+  max_depth: 6
+
+  
+num_features:
+  - Rank
+  - Year
+  - NA_Sales
+  - EU_Sales
+  - JP_Sales
+  - Other_Sales
+
+cat_features:
+  - Name
+  - Platform
+  - Genre
+  - Publisher
+
+target: Global_Sales
