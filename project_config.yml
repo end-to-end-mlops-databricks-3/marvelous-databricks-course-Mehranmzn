@@ -13,7 +13,7 @@ parameters:
   n_estimators: 1000
   max_depth: 6
 
-  
+
 num_features:
   - Rank
   - Year
