@@ -1,12 +1,12 @@
 prd:
   catalog_name: mlops_prd
-  schema_name: game-sales
+  schema_name: moazenim
 acc:
   catalog_name: mlops_acc
-  schema_name: game-sales
+  schema_name: moazenim
 dev:
   catalog_name: mlops_dev
-  schema_name: game-sales
+  schema_name: moazenim
 
 parameters:
   learning_rate: 0.01
