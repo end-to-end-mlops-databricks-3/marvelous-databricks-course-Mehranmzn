@@ -5,8 +5,8 @@ import pytest
 from loguru import logger
 from pyspark.sql import SparkSession
 
-from mlops_course import PROJECT_DIR
-from mlops_course.config import ProjectConfig, Tags
+from game_sales import PROJECT_DIR
+from game_sales.config import ProjectConfig, Tags
 from tests.unit_tests.spark_config import spark_config
 
 

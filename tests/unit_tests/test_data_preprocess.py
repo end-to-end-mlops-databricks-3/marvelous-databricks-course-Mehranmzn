@@ -2,8 +2,8 @@ import pandas as pd
 import pytest
 from pyspark.sql import SparkSession
 
-from mlops_course.config import ProjectConfig
-from mlops_course.data_process import DataProcessor
+from game_sales.config import ProjectConfig
+from game_sales.data_process import DataProcessor
 
 
 def test_data_ingestion(sample_data: pd.DataFrame) -> None:

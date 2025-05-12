@@ -2,7 +2,7 @@
 
 import platform
 
-from mlops_course import PROJECT_DIR
+from game_sales import PROJECT_DIR
 
 MLRUNS_DIR = PROJECT_DIR / "tests" / "mlruns"
 CATALOG_DIR = PROJECT_DIR / "tests" / "catalog"

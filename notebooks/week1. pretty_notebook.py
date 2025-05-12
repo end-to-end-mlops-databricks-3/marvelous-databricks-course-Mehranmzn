@@ -16,8 +16,8 @@ from marvelous.logging import setup_logging
 from marvelous.timer import Timer
 from pyspark.sql import SparkSession
 
-from mlops_course.config import ProjectConfig
-from mlops_course.data_process import DataProcessor
+from game_sales.config import ProjectConfig
+from game_sales.data_process import DataProcessor
 
 config = ProjectConfig.from_yaml(config_path="../project_config.yml", env="dev")
 
