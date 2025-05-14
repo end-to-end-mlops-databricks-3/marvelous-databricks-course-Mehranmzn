@@ -95,3 +95,7 @@ dmypy.json
 # VS code configuration
 .vscode
 .history
+
+notebooks/logs/
+.databricks/
+.init_scripts.sh
