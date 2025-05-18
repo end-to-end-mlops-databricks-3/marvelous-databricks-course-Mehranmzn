@@ -13,6 +13,8 @@ parameters:
   n_estimators: 1000
   max_depth: 6
 
+experiment_name_basic: /Shared/game-sales-prices-basic
+experiment_name_custom: /Shared/game-sales-prices-custom
 
 num_features:
   - Rank
